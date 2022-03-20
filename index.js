@@ -46,24 +46,18 @@ main();
 
     	logger.log(3, {id: infos.id, slug: infos.slug, name: infos.name, totalVideoTime: infos.totalVideoTime});
 		let folderName = infos.name.replace(/[&\/\\#\//\\,+()$~%.'":*?<>{}]/g, '');
-		//folderName = infos.name.replace('PL//SQL', 'PL_SQL')
 		console.log(folderName);
-		//let folderName = infos.name.replace(':', '-').replace('?','').replace(',', '-').replace('.', '');
 		create_folder(folderName)
 		
     	for (const title of infos.sections) {
-			//title.titulo.replace('PL/SQL', 'PL_SQL');
     		logger.log(4, {title: title.titulo.replace(/[&\/\\#\//\\,+()$~%.'":*?<>{}]/g, '')});
     		create_folder(`${folderName}/${title.position} - ${title.titulo.replace(/[&\/\\#\//\\,+()$~%.'":*?<>{}]/g, '')}`);
 
     		for (const lesson of title.videos) {
-				//lesson.nome.replace('PL/SQL', 'PL_SQL');
-    			//let folderLesson = lesson.nome.replace(':', '-').replace(',', '-').replace('.', '').replace('/','');
 				let folderLesson = lesson.nome.replace(/[&\/\\#\//\\,+()$~%.'":*?<>{}]/g, '');
     			let url = await get_video(lesson.id, infos.slug, access_token);
     			logger.log(5, {lesson: lesson.nome, id: lesson.id})
-    			//video_download(`${folderName}/${title.position} - ${title.titulo.replace('?','').replace(',', '-').replace('.', '')}/${lesson.position} - ${folderLesson}.mp4`, url, folderLesson)
-				video_download(`${folderName}/${title.position} - ${title.titulo.replace(/[&\/\\#\//\\,+()$~%.'":*?<>{}]/g, '')}/${lesson.position} - ${folderLesson}.mp4`, url, folderLesson)
+    			video_download(`${folderName}/${title.position} - ${title.titulo.replace(/[&\/\\#\//\\,+()$~%.'":*?<>{}]/g, '')}/${lesson.position} - ${folderLesson}.mp4`, url, folderLesson)
     		}
     	}
     }

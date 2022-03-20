@@ -14,7 +14,7 @@ function log(type, infos) {
         7: ansi.yellow(`[DEBUG] GET COURSE`),
         8: ansi.yellow(`[DEBUG] PARSE COURSE`),
         9: ansi.yellow(`[DEBUG] DOWNLOADED TITLE: ${ansi.yellowBright(`${infos.title}`.toUpperCase())}`),
-        10: ansi.green('WELCOME! THIS IS A PROGRAM TO DOWNLOAD ALURA COURSES FOR YOU WATCH OFFLINE! ENJOY!')
+        10: ansi.green('WELCOME! THIS IS A PROGRAM TO DOWNLOAD COURSES FOR YOU WATCH OFFLINE! ENJOY!')
     }
 
     console.log(lines[type]);
